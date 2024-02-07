@@ -5,13 +5,16 @@ export const baseApi = createApi({
   reducerPath: 'baseApi',
   baseQuery: fetchBaseQuery({ baseUrl: 'http://192.168.100.33:8000/api/' }), // Ajusta la URL de la API según tu configuración
   endpoints: (builder) => ({
-    getHumidity: builder.query({
-      query: () => 'humidity/'
+    getInventory: builder.query({
+      query: () => 'inventory/'
     }),
-    getTemperature: builder.query({
-      query: () => 'temperature/'      
+    getInventoryHistorical: builder.query({
+      query: () => 'inventory_historical/'
     }),
+    // getTemperature: builder.query({
+    //   query: () => 'temperature/'      
+    // }),
   })
 });
 
-export const { useGetHumidityQuery, useGetTemperatureQuery } = baseApi;
+export const { useGetInventoryQuery, useGetInventoryHistoricalQuery } = baseApi;

@@ -1,11 +1,12 @@
 import React from 'react';
 import { Breadcrumb, Layout, Menu, theme, Col, Row, Divider } from 'antd';
-import Humidity from './components/Humidity';
-import Temperature from './components/Temperature';
+// import Humidity from './components/Humidity';
+// import Temperature from './components/Temperature';
 
 import UisekLogo from './images/LOGO-UISEK-web-387x143-1.png';
 
 import { ToastContainer} from 'react-toastify';
+import Legos from './components/Legos';
 const { Header, Content, Footer } = Layout;
 
 
@@ -63,15 +64,15 @@ const App = () => {
           }}
         >
            <Row>
-            <Col span={11}>
-              <Temperature />
+            <Col span={24}>
+              <Legos />
             </Col>
-            <Col span={1} style={{'textAlign': 'center'}}>
+            {/* <Col span={1} style={{'textAlign': 'center'}}>
               <Divider type="vertical" style={{'height': '100%'}}/>
             </Col>
             <Col span={11}>
               <Humidity />
-            </Col>
+            </Col> */}
           </Row>
         </div>
       </Content>

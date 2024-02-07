@@ -1,26 +1,54 @@
 from rest_framework import serializers
-from myapp.models import Humidity, Temperature
+from myapp.models import Inventory, InventoryHistorical
 
 
-class HumiditySerializer(serializers.ModelSerializer):
+class InventoryHistoricalSerializer(serializers.ModelSerializer):
     key = serializers.SerializerMethodField()
     date = serializers.DateTimeField(format="%Y-%m-%d %H:%M:%S", required=False)
 
     class Meta:
-        model = Humidity
+        model = InventoryHistorical
+        fields = "__all__"
+    
+    def get_key(self, obj):
+        return obj.id
+
+
+class InventorySerializer(serializers.ModelSerializer):
+    key = serializers.SerializerMethodField()
+    last_update = serializers.DateTimeField(format="%Y-%m-%d %H:%M:%S", required=False)
+
+    class Meta:
+        model = Inventory
         fields = "__all__"
 
     def get_key(self, obj):
         return obj.id
 
 
-class TemperatureSerializer(serializers.ModelSerializer):
-    key = serializers.SerializerMethodField()
-    date = serializers.DateTimeField(format="%Y-%m-%d %H:%M:%S", required=False)
+# def get_key(self, obj):
+#     return obj.id
 
-    class Meta:
-        model = Temperature
-        fields = "__all__"
 
-    def get_key(self, obj):
-        return obj.id
+# class HumiditySerializer(serializers.ModelSerializer):
+#     key = serializers.SerializerMethodField()
+#     date = serializers.DateTimeField(format="%Y-%m-%d %H:%M:%S", required=False)
+
+#     class Meta:
+#         model = Humidity
+#         fields = "__all__"
+
+#     def get_key(self, obj):
+#         return obj.id
+
+
+# class TemperatureSerializer(serializers.ModelSerializer):
+#     key = serializers.SerializerMethodField()
+#     date = serializers.DateTimeField(format="%Y-%m-%d %H:%M:%S", required=False)
+
+#     class Meta:
+#         model = Temperature
+#         fields = "__all__"
+
+#     def get_key(self, obj):
+#         return obj.id
